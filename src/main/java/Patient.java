@@ -40,7 +40,7 @@ public class Patient implements ImageDisplayable {
     public void display_administrator(){
         System.out.print("Patient: " + getPatientName() + ": ");
         for(Examination exam:examinations){
-            exam.getDisplayText();
+            exam.display_text();
         }
     }
 
@@ -66,7 +66,10 @@ public class Patient implements ImageDisplayable {
                 subPatientPanel.add(MRI_label);
             }
             if (exam instanceof BP){
-                JLabel BPInfo = new JLabel("<html>" + "Blood pressure<br>" + ((BP) exam).get_BP_Systolic() + " over " + ((BP) exam).get_BP_Diastolic() + "<br></html>");
+                JLabel BPInfo = new JLabel("<html>" + "Blood pressure<br>" + ((BP) exam).get_BP_Systolic()
+                        + " mmHg over " + ((BP) exam).get_BP_Diastolic() + " mmHg <br> Duration: " + ((BP) exam).get_BP_duration()
+                        + "<br> Date: "+ ((BP) exam).get_exam_date()
+                        + "<br></html>");
                 subPatientPanel.add(BPInfo);
             }
         }

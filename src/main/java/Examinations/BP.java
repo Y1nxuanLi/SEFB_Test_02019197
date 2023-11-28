@@ -13,7 +13,7 @@ public class BP extends Examination {
         this.diastolic = diastolic;
     }
 
-    public String get_BP_durationL(){
+    public String get_BP_duration(){
         return this.bp_duration;
     }
 
@@ -24,9 +24,8 @@ public class BP extends Examination {
         return this.diastolic;
     }
 
-    public void getDisplayText(){
-        System.out.println("BP: " + get_BP_durationL() + ", " + get_exam_date());
-        String BP_text;
+    public void display_text(){
+        System.out.println("BP: " + get_BP_duration() + ", " + get_exam_date());
     }
 
 }

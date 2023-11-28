@@ -26,7 +26,7 @@ public class MRI extends Examination {
         return this.field_strength;
     }
 
-    public void getDisplayText(){
+    public void display_text(){
         System.out.print("MRI: " + get_MRI_Field() + " Tesla, " + get_exam_date() + ": " );
     }
 }
