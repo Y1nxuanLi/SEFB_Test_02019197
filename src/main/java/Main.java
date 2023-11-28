@@ -1,56 +1,50 @@
-import Package1.SubClass1;
-import Package1.SubClass2;
-import Package2.SubClass3;
-import Package2.SubClass4;
+import Examinations.BP;
+import Examinations.MRI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.LocalDate;
 
 public class Main {
-
     public static void main(String[] args) {
-        System.out.println();
+        LocalDate MRI_Time_1 = LocalDate.of(2023,9,14);
+        String MRI_URL_1 = "https://martinh.netfirms.com/BIOE60010/mri1.jpg";
+        LocalDate MRI_Time_2 = LocalDate.of(2023,11,19);
+        String MRI_URL_2 = "https://martinh.netfirms.com/BIOE60010/mri2.jpg";
 
-        SubClass1 sub1 = new SubClass1();
-        SubClass2 sub2 = new SubClass2();
-        SubClass3 sub3 = new SubClass3();
-        SubClass4 sub4 = new SubClass4();
-        String x = sub1.constructSubClass1Parameter4();
-        System.out.println(x);
-        String y = sub1.setSubClass1Parameter5("Test");
-        System.out.println(y);
+        LocalDate BP_Time_1 = LocalDate.of(2023,9,15);
+        LocalDate BP_Time_2 = LocalDate.of(2023,1,23);
 
-        sub1.Display();
-        sub2.Display();
-        sub3.interfaceDisplay();
-        sub4.interfaceDisplay();
+        MRI mri1 = new MRI(MRI_Time_1, MRI_URL_1, 2);
+        MRI mri2 = new MRI(MRI_Time_2, MRI_URL_2, 4);
+        BP bp1 = new BP(BP_Time_1, "ST", 130, 70);
+        BP bp2 = new BP(BP_Time_2, "VST", 150, 80);
 
-        sub1.interfaceDisplay();
-        sub2.interfaceDisplay();
+        String pat_URL_1 = "https://martinh.netfirms.com/BIOE60010/DaphneVonOram.jpg";
+        Patient patient1 = new Patient("Daphne Von Oram", 62, pat_URL_1);
+        patient1.addExamnimation(mri1);
+        patient1.addExamnimation(bp1);
 
-        User user1 = new User("Bob");
-        user1.changeArray();
-        User user2 = new User("Jack");
-        user2.changeInfo("NEW NEW NEW NEW NEW");
+        String pat_URL_2 = "https://martinh.netfirms.com/BIOE60010/SebastianCompton.jpg";
+        Patient patient2 = new Patient("Sebastian Compton", 31, pat_URL_2);
+        patient2.addExamnimation(mri2);
+        patient2.addExamnimation(bp2);
 
-        // Create a simple window to display the output
+        System.out.println("Administrator View");
+        patient1.display_administrator();
+        patient2.display_administrator();
 
-        JFrame f=new JFrame("Title");
+        JPanel patientPanel1 = patient1.display_doctor();
+        JPanel patientPanel2 = patient2.display_doctor();
 
-        JPanel displayPanel = new JPanel();
-        // Create a label for each patient's text
-        JLabel displayLabel1 = new JLabel("<html>"+user1.displayAllMethod()+"<html><ul><li>Item 1</li><li>Item 2</li></ul></html>"+"<br></html>");
-        JLabel displayLabel2 = new JLabel("<html>"+user2.displayAllMethod()+"<br></html>");
+        JFrame f=new JFrame("Doctor View");
+        f.setSize(1000, 400);
+        f.setLayout(new GridLayout(2, 1));
 
-        displayPanel.add(displayLabel1);
-        displayPanel.add(displayLabel2);
-
-        f.setSize(600, 400);
-        f.setLayout(new GridLayout(1, 2));
-
-        f.add(displayLabel1);
-        f.add(displayLabel2);
+        f.add(patientPanel1);
+        f.add(patientPanel2);
 
         f.setVisible(true);
         f.addWindowListener(new WindowAdapter() {// Ends program if close window is clicked
@@ -59,6 +53,4 @@ public class Main {
             }
         });
     }
-
-
 }
