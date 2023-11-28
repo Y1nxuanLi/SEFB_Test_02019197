@@ -18,7 +18,7 @@ public abstract class Examination implements ImageDisplayable {
         return exam_date;
     }
 
-    public abstract String getDisplayText();
+    public abstract void getDisplayText();
 
     @Override
     public ImageIcon imageDisplay(String exam_url){

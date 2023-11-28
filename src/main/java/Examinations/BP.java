@@ -24,11 +24,9 @@ public class BP extends Examination {
         return this.diastolic;
     }
 
-    public String getDisplayText(){
+    public void getDisplayText(){
         System.out.println("BP: " + get_BP_durationL() + ", " + get_exam_date());
         String BP_text;
-        BP_text = "Blood pressure " + get_BP_Systolic() + " over " + get_BP_Diastolic();
-        return BP_text;
     }
 
 }
