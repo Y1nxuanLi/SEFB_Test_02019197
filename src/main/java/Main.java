@@ -36,15 +36,31 @@ public class Main {
         patient1.display_administrator();
         patient2.display_administrator();
 
+
+//        // Testing the thrid patient
+//        String MRI_URL_3 = "https://martinh.netfirms.com/BIOE60010/mri2.jpg";
+//        LocalDate MRI_Time_3 = LocalDate.of(2023,11,19);
+//        LocalDate BP_Time_3 = LocalDate.of(2023,1,23);
+//        MRI mri3 = new MRI(MRI_Time_3, MRI_URL_3, 3);
+//        BP bp3 = new BP(BP_Time_3, "ST", 125, 65);
+//
+//        String pat_URL_3 = "https://martinh.netfirms.com/BIOE60010/SebastianCompton.jpg";
+//        Patient patient3 = new Patient("John Smith", 50, pat_URL_3);
+//        patient3.addExamnimation(mri3);
+//        patient3.addExamnimation(bp3);
+
         JPanel patientPanel1 = patient1.display_doctor();
         JPanel patientPanel2 = patient2.display_doctor();
+//        JPanel patientPanel3 = patient3.display_doctor();
 
         JFrame f=new JFrame("Doctor View");
         f.setSize(1000, 400);
         f.setLayout(new GridLayout(2, 1));
+//        f.setLayout(new GridLayout(3, 1));
 
         f.add(patientPanel1);
         f.add(patientPanel2);
+//        f.add(patientPanel3);
 
         f.setVisible(true);
         f.addWindowListener(new WindowAdapter() {// Ends program if close window is clicked

@@ -1,5 +1,6 @@
 import Examinations.BP;
 import Examinations.Examination;
+import Examinations.ImageDisplayable;
 import Examinations.MRI;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Patient{
+public class Patient implements ImageDisplayable {
     private  String name;
     private  int age;
     private  String patient_URL;
@@ -20,6 +21,14 @@ public class Patient{
         this.patient_URL = patient_URL;
     }
 
+    public String getPatientName(){
+        return this.name;
+    }
+
+    public int getPatientAge(){
+        return this.age;
+    }
+
     public String get_patient_URL(){
         return this.patient_URL;
     }
@@ -29,7 +38,7 @@ public class Patient{
     }
 
     public void display_administrator(){
-        System.out.print("Patient: " + name + ": ");
+        System.out.print("Patient: " + getPatientName() + ": ");
         for(Examination exam:examinations){
             exam.getDisplayText();
         }
@@ -46,9 +55,8 @@ public class Patient{
         subPatientPanel.add(patient1_label);
 
 
-        JLabel PatientInfo = new JLabel("<html>" + "Name: "+ name + "<br>" + "Age:" + age+ "<br></html>");
+        JLabel PatientInfo = new JLabel("<html>" + "Name: "+ getPatientName() + "<br>" + "Age:" + getPatientAge() + "<br></html>");
         subPatientPanel.add(PatientInfo);
-
 
         for(Examination exam:examinations){
             if (exam instanceof MRI){
@@ -65,8 +73,8 @@ public class Patient{
         return subPatientPanel;
     }
 
+    @Override
     public ImageIcon imageDisplay(String ppl_url){
-        JLabel label = new JLabel();
         URL Patient_URL = null;
         try {
             Patient_URL = new URL(ppl_url);
